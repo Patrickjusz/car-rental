@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCarRequest;
+use App\Services\CarService;
+use Illuminate\Http\JsonResponse;
 
 class CarsController extends Controller
 {
@@ -21,11 +23,11 @@ class CarsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreCarRequest $request): JsonResponse
     {
-        //
+        return CarService::create($request->validated());
     }
 
     /**
@@ -44,21 +46,22 @@ class CarsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(StoreCarRequest $request, $id): JsonResponse
     {
-        //
+        // X-Requested-With:XMLHttpRequest
+        return CarService::update($request->validated(), $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        return CarService::destroy($id);
     }
 }
