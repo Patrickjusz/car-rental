@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\Http\Requests\StoreCarRequest;
+use App\Http\Requests\UpsertCarRequest;
 use App\Services\CarService;
 use Illuminate\Http\JsonResponse;
 
@@ -25,7 +25,7 @@ class CarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return JsonResponse
      */
-    public function store(StoreCarRequest $request): JsonResponse
+    public function store(UpsertCarRequest $request): JsonResponse
     {
         return CarService::create($request->validated());
     }
@@ -48,7 +48,7 @@ class CarsController extends Controller
      * @param  int  $id
      * @return JsonResponse
      */
-    public function update(StoreCarRequest $request, $id): JsonResponse
+    public function update(UpsertCarRequest $request, $id): JsonResponse
     {
         // X-Requested-With:XMLHttpRequest
         return CarService::update($request->validated(), $id);
