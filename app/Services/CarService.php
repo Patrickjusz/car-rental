@@ -81,7 +81,6 @@ class CarService
         if ($data)
             $returnData['data'] = $data;
 
-
         return response()->json($returnData, $httpCode);
     }
 }
