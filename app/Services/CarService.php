@@ -20,7 +20,7 @@ class CarService
      */
     public static function create(array $data): JsonResponse
     {
-        $data = Car::create($data);
+        $car = Car::create($data);
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
     }
 
@@ -41,7 +41,7 @@ class CarService
             return self::getJsonResponse(self::STATUS_FAIL, $error->getMessage(), 404);
         }
 
-        return self::getJsonResponse(self::STATUS_SUCCESS, '', 204, $data);
+        return self::getJsonResponse(self::STATUS_SUCCESS, '', 200, $data);
     }
 
     /**

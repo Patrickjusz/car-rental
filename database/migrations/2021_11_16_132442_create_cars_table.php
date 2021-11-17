@@ -18,7 +18,9 @@ class CreateCarsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->integer('amount')->default(1);
+            $table->integer('amount')->default(1); //@TODO: remove
+            $table->integer('key')->nullable();
+            $table->string('type')->nullable();
             $table->enum('state', ['active', 'inactive']);
             $table->softDeletes();
             $table->timestamps();

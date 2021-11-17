@@ -23,7 +23,14 @@ final class DatatableCars
             return DataTables::of($cars)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edytuj</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Usuń</a>';
+                    $dataTag = ' data-id="' . $row->id . '" ';
+                    $dataTag .= ' data-name="' . $row->name . '" ';
+                    $dataTag .= ' data-description="' . $row->description . '" ';
+                    $dataTag .= ' data-price="' . $row->price . '" ';
+                    $dataTag .= ' data-amount="' . $row->amount . '" ';
+                    $dataTag .= ' data-state="' . $row->state . '" ';
+
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm btn-action" ' . $dataTag . ' data-action="edit">Edytuj</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm btn-action" data-id="' . $row->id . '" data-action="delete">Usuń</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

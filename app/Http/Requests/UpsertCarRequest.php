@@ -25,9 +25,9 @@ class UpsertCarRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:512',
-            'description' => 'string|max:2048',
+            'description' => 'nullable|string|max:2048',
             'price' => 'required|numeric',
-            'amount' => 'integer',
+            // 'amount' => 'nullable|integer',
             'state' => 'required|in:active,inactive',
         ];
     }
