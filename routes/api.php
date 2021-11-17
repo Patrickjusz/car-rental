@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Helpers\DatatableCars;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\RentalController;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,6 @@ Route::get('/datatable-cars', function (Request $request): JsonResponse {
 Route::post('/cars', [CarsController::class, 'store']);
 Route::put('/cars/{id}', [CarsController::class, 'update']);
 Route::delete('/cars/{id}', [CarsController::class, 'destroy']);
+
+// Rental endpoints
+Route::post('/rental', [RentalController::class, 'store']);

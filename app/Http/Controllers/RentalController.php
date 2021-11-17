@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRentalRequest;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Models\Car;
 
 class RentalController extends Controller
@@ -26,8 +26,8 @@ class RentalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRentalRequest $request)
     {
-        //
+        echo 'ok';
     }
 }
