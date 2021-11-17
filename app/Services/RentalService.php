@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\GetBoredApiActivityJob;
 use Carbon\Carbon;
 use App\Models\Car;
 use App\Models\Order;
@@ -24,28 +25,11 @@ class RentalService
     {
         $data['date_from'] = Carbon::parse($data['date_from']);
         $data['date_to'] = Carbon::parse($data['date_to']);
-
-        //@TODO: Move to queue+jobs !! ;>
-        $boredApi = new BoredApi();
-        $response = $boredApi->getActivity(1);
-
         $order = Order::create($data);
+
         if ($order->wasRecentlyCreated === true) {
-            if (is_array($response)) {
-                $car = $order->car;
-
-                if (!is_null($response['key'])) {
-                    $car->key = $response['key'];
-                }
-
-                if (!is_null($response['type'])) {
-                    $car->type = $response['type'];
-                }
-                $car->save();
-            }
-
-            $details['email'] = $order->email;
-            dispatch(new SendNewOrderMailJob($details));
+            dispatch(new GetBoredApiActivityJob($order->car));
+            dispatch(new SendNewOrderMailJob($order->email));
         }
 
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
