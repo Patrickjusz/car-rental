@@ -13,7 +13,7 @@ class StoreRentalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreRentalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'car_id' => 'required|integer',
+            'city' => 'required|string|max:512',
+            'email' => 'required|email',
+            'date_from' => 'required|Date',
+            'date_to' => 'required|Date',
         ];
     }
 }

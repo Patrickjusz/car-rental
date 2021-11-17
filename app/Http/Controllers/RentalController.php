@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRentalRequest;
-use Illuminate\View\View;
 use App\Models\Car;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreRentalRequest;
+use App\Services\RentalService;
 
 class RentalController extends Controller
 {
@@ -28,6 +30,6 @@ class RentalController extends Controller
      */
     public function store(StoreRentalRequest $request)
     {
-        echo 'ok';
+        return RentalService::create($request->validated());
     }
 }

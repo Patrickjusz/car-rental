@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Car;
+use Carbon\Carbon;
+use App\Models\Order;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class RentalService
 {
@@ -20,7 +19,9 @@ class RentalService
      */
     public static function create(array $data): JsonResponse
     {
-        $car = Car::create($data);
+        $data['date_from'] = Carbon::parse($data['date_from']);
+        $data['date_to'] = Carbon::parse($data['date_to']);
+        $order = Order::create($data);
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
     }
 

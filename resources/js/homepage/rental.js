@@ -1,6 +1,7 @@
 var $reservationModal = $("#reservation-modal");
 var $btnSaveReservation = $("#btn-save-reservation");
 var $cityInput = $("#reservation-city");
+var $emailInput = $("#reservation-email");
 var $dateFrom = $("#reservation-date-from");
 var $dateTo = $("#reservation-date-to");
 var $formControl = $(".form-control");
@@ -24,10 +25,11 @@ class Rental {
 
     getFormData() {
         let formData = new Object();
-        formData.id = $($btnSaveReservation).data("id") ?? 0;
+        formData.car_id = $($btnSaveReservation).data("id") ?? 0;
         formData.city = $($cityInput).val();
-        formData.dateFrom = $($dateFrom).val();
-        formData.dateTo = $($dateTo).val();
+        formData.email = $($emailInput).val();
+        formData.date_from = $($dateFrom).val();
+        formData.date_to = $($dateTo).val();
 
         return formData;
     }
@@ -36,7 +38,7 @@ class Rental {
         let errors = [];
         $($formControl).removeClass("is-invalid");
 
-        if (formData.id < 0) {
+        if (formData.car_id < 0) {
             errors.push("Błąd ogólny. Brak id!");
             $($nameInput).addClass("is-invalid");
         }
@@ -46,20 +48,31 @@ class Rental {
             $($cityInput).addClass("is-invalid");
         }
 
+        if (!this.isValidEmail(formData.email)) {
+            errors.push("Bad email address!");
+            $($emailInput).addClass("is-invalid");
+        }
+
         if (
-            typeof formData.dateFrom === "undefined" ||
+            typeof formData.date_from === "undefined" ||
             formData.dateFrom == ""
         ) {
             errors.push("The dateFrom is required!");
             $($dateFrom).addClass("is-invalid");
         }
 
-        if (typeof formData.dateTo === "undefined" || formData.dateTo == "") {
+        if (typeof formData.date_to === "undefined" || formData.dateTo == "") {
             errors.push("The dateTo is required!");
             $($dateTo).addClass("is-invalid");
         }
 
         return errors;
+    }
+
+    isValidEmail(email) {
+        const re =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     checkErrors(errors) {

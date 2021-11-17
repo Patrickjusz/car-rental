@@ -8,8 +8,13 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Miasto odbioru auta:</label>
+                        <label for="reservation-city" class="col-form-label">Miasto odbioru auta:</label>
                         <input type="text" class="form-control" id="reservation-city" maxlength="512">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Adres e-mail:</label>
+                        <input type="email" class="form-control" id="reservation-email" maxlength="512">
                     </div>
 
                     <div class="mb-3">
