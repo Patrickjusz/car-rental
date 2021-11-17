@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class RentalController extends Controller
 {
@@ -14,7 +15,8 @@ class RentalController extends Controller
      */
     public function index(): View
     {
-        return view('cars');
+        $cars = Car::where('state', 'active')->paginate(10);
+        return view('rental', ['cars' => $cars]);
     }
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\RentalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/cars', [CarsController::class, 'index']);
+Route::get('/rental', [RentalController::class, 'index']);
