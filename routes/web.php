@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\RentalController;
+use App\Jobs\SendNewOrderMailJob;
 use Illuminate\Support\Facades\Route;
 
 /*
