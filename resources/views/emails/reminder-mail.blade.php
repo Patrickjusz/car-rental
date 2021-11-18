@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>Nowe zamówienie</title>
+    <title>Przypomnienie</title>
 </head>
 
 <body>
-    <h1>Cześć! Złożyłeś zamówienie, oto twoje dane wstrzyknięte z bazy... gdyby nie fakt, że to mockup!</h1>
+    <h1>Cześć! Pamiętasz o swoim samochodzie? Mógłbym tu wstrzyknąć wartości zamówienia z bazy ale to tylko mockup...</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad doloribus, eos ipsam eaque quasi sunt, ut deleniti
         maxime aperiam velit quam officia odit placeat id rem dolores, vitae itaque nihil?
         Accusantium eius voluptatum enim et architecto adipisci ;> tak wiem że można i tu dziedziczyć ;> itaque at sit? Dicta aspernatur quidem repellat ipsam
