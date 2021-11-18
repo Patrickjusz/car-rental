@@ -23,22 +23,43 @@ class RentalService
      */
     public static function create(array $data): JsonResponse
     {
-        $data['date_from'] = Carbon::parse($data['date_from']);
-        $data['date_to'] = Carbon::parse($data['date_to']);
-        $data['ip'] = Request::ip();
-        $data['user_agent'] = Request::userAgent();
-        $order = Order::create($data); 
-        // Hey! Look: app/Observers/OrderObserver.php ;>
+        $data = self::prepareData($data);
+        Order::create($data); // Look at this: app/Observers/OrderObserver.php ;>
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
     }
 
+    /**
+     * Get order by car_id
+     *
+     * @param  int $id
+     * @return JsonResponse
+     */
     public static function get(int $id): JsonResponse
     {
         $data = Order::where('car_id', $id)->get();
-
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 200, $data);
     }
 
+    /**
+     * Convert data
+     *
+     * @param  array $data
+     * @return array
+     */
+    private static function prepareData(array $data): array
+    {
+        try {
+            $data['date_from'] = Carbon::parse($data['date_from']);
+            $data['date_to'] = Carbon::parse($data['date_to']);
+        } catch (\Exception $e) {
+            //@TODO ;>
+        }
+        $data['ip'] = Request::ip();
+        $data['user_agent'] = Request::userAgent();
+        return $data;
+    }
+
+    // @TODO: Move to separate class. SSSOLID! </3
     /**
      * Get service HTTP response.
      *
