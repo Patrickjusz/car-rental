@@ -40,7 +40,7 @@ class SendReminderOrderEmail extends Command
      */
     public function handle()
     {
-        $orders = Order::whereDate('date_from', '<=', Carbon::tomorrow())->where('is_notify', 0)->get();
+        $orders = Order::whereDate('date_from', '=', Carbon::tomorrow())->where('is_notify', 0)->get();
         foreach ($orders as $order) {
             dispatch(new SendReminderMailJob($order));
         }
