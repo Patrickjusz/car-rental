@@ -3,10 +3,10 @@ require("./bootstrap");
 require("./helpers/SimpleRequest");
 
 // ADMIN
-require("./admin/cars/variables");
-require("./admin/cars/cars");
-require("./admin/cars/datatable");
-require("./admin/cars/events");
+require("./cars/variables");
+require("./cars/cars");
+require("./cars/datatable");
+require("./cars/events");
 
 // HOMEPAGE
 require("./homepage/variables");

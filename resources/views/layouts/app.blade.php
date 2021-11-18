@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @yield('head')
+    @include('layouts.head')
 </head>
 
 <body>
@@ -10,7 +10,9 @@
         @yield('content')
     </div>
 
-    @yield('js_links')
+    @include('layouts.loading')
+    @include('layouts.js_links')
+
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 

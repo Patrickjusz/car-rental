@@ -41,6 +41,7 @@ class Rental {
         return formData;
     }
 
+    //@TODO: Refactor! Get lang from resources/lang/pl.... ;>
     validateInputs(formData) {
         let errors = [];
         $($formControl).removeClass("is-invalid");
@@ -62,14 +63,14 @@ class Rental {
 
         if (
             typeof formData.date_from === "undefined" ||
-            formData.dateFrom == ""
+            formData.date_from == ""
         ) {
-            errors.push("The dateFrom is required!");
+            errors.push("The date from is required!");
             $($dateFrom).addClass("is-invalid");
         }
 
-        if (typeof formData.date_to === "undefined" || formData.dateTo == "") {
-            errors.push("The dateTo is required!");
+        if (typeof formData.date_to === "undefined" || formData.date_to == "") {
+            errors.push("The date to is required!");
             $($dateTo).addClass("is-invalid");
         }
 

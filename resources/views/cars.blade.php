@@ -1,8 +1,6 @@
 @section('page_title', 'Moduł samochodów')
 
 @extends('layouts.app')
-@extends('layouts.head')
-@extends('layouts.js_links')
 
 @section('content')
     <h1 class="mb-4 text-center">Moduł samochodów</h1>
@@ -25,6 +23,7 @@
     </table>
 
     @include('cars.edit_modal')
+    @include('cars.reservation_modal')
 @endsection
 
 @section('javascript')

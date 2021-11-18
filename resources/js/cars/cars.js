@@ -95,6 +95,7 @@ class Cars {
         $($stateSelect).val($(el).data("state"));
     }
 
+    //@TODO: Refactor! Get lang from resources/lang/pl.... ;>
     validateInputs(formData) {
         let errors = [];
         $($formControl).removeClass("is-invalid");

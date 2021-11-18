@@ -6,6 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                {{-- https://laravelcollective.com/ HMM? --}}
                 <form>
                     <div class="mb-3">
                         <label for="reservation-city" class="col-form-label">Miasto odbioru auta:</label>
@@ -13,7 +14,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Adres e-mail:</label>
+                        <label for="reservation-email" class="col-form-label">Adres e-mail:</label>
                         <input type="email" class="form-control" id="reservation-email" maxlength="512">
                     </div>
 
@@ -45,12 +46,5 @@
                 <button id="btn-save-reservation" type="button" class="btn btn-primary">Zarezerwuj</button>
             </div>
         </div>
-    </div>
-</div>
-
-
-<div class="loading hidden">
-    <div class='uil-ring-css' style='transform:scale(0.79);'>
-        <div></div>
     </div>
 </div>

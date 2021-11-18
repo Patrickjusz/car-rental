@@ -1,8 +1,6 @@
 @section('page_title', 'Strona wypożyczalni')
 
 @extends('layouts.app')
-@extends('layouts.head')
-@extends('layouts.js_links')
 
 @section('content')
     <div class="container">
