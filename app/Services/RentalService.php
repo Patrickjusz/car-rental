@@ -27,13 +27,8 @@ class RentalService
         $data['date_to'] = Carbon::parse($data['date_to']);
         $data['ip'] = Request::ip();
         $data['user_agent'] = Request::userAgent();
-        $order = Order::create($data);
-
-        if ($order->wasRecentlyCreated === true) {
-            dispatch(new GetBoredApiActivityJob($order->car));
-            dispatch(new SendNewOrderMailJob($order->email));
-        }
-
+        $order = Order::create($data); 
+        // Hey! Look: app/Observers/OrderObserver.php ;>
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
     }
 
