@@ -9,7 +9,7 @@
     <h1>Cześć! Złożyłeś zamówienie!</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad doloribus, eos ipsam eaque quasi sunt, ut deleniti
         maxime aperiam velit quam officia odit placeat id rem dolores, vitae itaque nihil?
-        Accusantium eius voluptatum enim et architecto adipisci itaque at sit? Dicta aspernatur quidem repellat ipsam
+        Accusantium eius voluptatum enim et architecto adipisci ;> tak wiem że można i tu dziedziczyć ;> itaque at sit? Dicta aspernatur quidem repellat ipsam
         sequi, corrupti, itaque, placeat cum libero sit natus distinctio unde possimus consequuntur fugit nostrum
         excepturi?
     </p>

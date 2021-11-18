@@ -156,7 +156,7 @@ class Cars {
     }
 
     reloadDatatable() {
-        datatable.ajax.reload();
+        datatable.ajax.reload(null, false);
     }
 
     showOrders(id) {
