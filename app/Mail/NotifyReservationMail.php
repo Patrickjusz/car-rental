@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewOrderMail extends Mailable
+class NotifyReservationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,6 +29,6 @@ class NewOrderMail extends Mailable
     public function build()
     {
         // @TODO: REFACTOR! resources/lang/pl...
-        return $this->subject('Złożyłeś zamówienie')->view('emails.new-order-mail');
+        return $this->subject('Przopomnienie o rezerwacji')->view('emails.reminder-mail');
     }
 }
