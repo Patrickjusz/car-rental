@@ -16,7 +16,7 @@ class CreateCarsTable extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->integer('amount')->default(1); //@TODO: remove
             $table->integer('key')->nullable();
