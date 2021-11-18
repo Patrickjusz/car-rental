@@ -10,14 +10,14 @@
     <table id="datatable-cars" class="table table-striped table-bordered nowrap">
         <thead>
             <tr>
-                <th></th>
-                <th>Nazwa</th>
+                <th>ID</th>
+                <th class="all">Nazwa samochodu</th>
                 <th>Opis</th>
-                <th>Cena za dzień</th>
-                <th>Klucz (API)</th>
-                <th>Typ (API)</th>
-                <th>Status</th>
-                <th>Akcje</th>
+                <th class="desktop ">Cena za dzień</th>
+                <th class="desktop ">Klucz (API)</th>
+                <th class="desktop ">Typ (API)</th>
+                <th class="desktop ">Status</th>
+                <th class="all">Akcje</th>
             </tr>
         </thead>
         <tbody>

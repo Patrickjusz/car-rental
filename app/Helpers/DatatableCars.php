@@ -30,7 +30,7 @@ final class DatatableCars
                     $dataTag .= ' data-amount="' . $row->amount . '" ';
                     $dataTag .= ' data-state="' . $row->state . '" ';
 
-                    $actionBtn = '<a href="javascript:void(0)" class="btn btn-success btn-sm btn-action" data-id="' . $row->id . '" data-action="preview">Zamówienia API</a> <a href="javascript:void(0)" class="edit btn btn-primary btn-sm btn-action" ' . $dataTag . ' data-action="edit">Edytuj</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm btn-action" data-id="' . $row->id . '" data-action="delete">Usuń</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="btn btn-success btn-sm btn-action" data-id="' . $row->id . '" data-action="preview"><i class="fa-solid fa-eye"></i></a> <a href="javascript:void(0)" class="edit btn btn-primary btn-sm btn-action" ' . $dataTag . ' data-action="edit"><i class="fa-solid fa-pen-to-square"></i></a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm btn-action" data-id="' . $row->id . '" data-action="delete"><i class="fa-solid fa-trash-can"></i></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

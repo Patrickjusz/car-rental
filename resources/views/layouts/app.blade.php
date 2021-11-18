@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5 p-5">
         @yield('content')
     </div>
 
