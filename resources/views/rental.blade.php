@@ -64,5 +64,8 @@
 @endsection
 
 @section('javascript')
-    {{--  --}}
+    <script type="text/javascript">
+        const API_KEY_DASHBOARD = '';
+        const API_KEY_PUBLIC = "{{ env('API_KEY_PUBLIC') }}";
+    </script>
 @endsection

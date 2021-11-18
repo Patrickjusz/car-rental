@@ -29,5 +29,7 @@
 @section('javascript')
     <script type="text/javascript">
         const carsDatatableApiUrl = '{{ route('datatable.cars') }}';
+        const API_KEY_DASHBOARD = "{{ env('API_KEY_DASHBOARD') }}";
+        const API_KEY_PUBLIC = "";
     </script>
 @endsection

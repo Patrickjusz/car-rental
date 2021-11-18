@@ -10,7 +10,6 @@ var $formErrors = $(".form-errors");
 class Rental {
     // config
     apiUrl = "api/rental";
-    httpHeaders = { "X-Authorization": "API_KEY" };
     data = {};
 
     add() {

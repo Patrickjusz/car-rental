@@ -18,16 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// It's not REST API endpoint! It's Yajra datatable component
+// It's not REST API endpoint! It's Yajra datatable component (example table). Security ISSUE!
 Route::get('/datatable-cars', function (Request $request): JsonResponse {
     return DatatableCars::getJSON($request);
 })->name('datatable.cars');
 
-// Cars endpoints
-Route::post('/cars', [CarsController::class, 'store']);
-Route::put('/cars/{id}', [CarsController::class, 'update']);
-Route::delete('/cars/{id}', [CarsController::class, 'destroy']);
+Route::middleware(['auth.apikey'])->group(function () {
+    // Cars endpoints
+    Route::post('/cars', [CarsController::class, 'store']);
+    Route::put('/cars/{id}', [CarsController::class, 'update']);
+    Route::delete('/cars/{id}', [CarsController::class, 'destroy']);
 
-// Rental endpoints
-Route::post('/rental', [RentalController::class, 'store']);
-Route::get('/rental/{id}', [RentalController::class, 'get']);
+    // Rental endpoints
+    Route::post('/rental', [RentalController::class, 'store']);
+    Route::get('/rental/{id}', [RentalController::class, 'get']);
+});

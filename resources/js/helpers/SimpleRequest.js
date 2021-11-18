@@ -1,7 +1,7 @@
 class SimpleRequest {
     // config
     apiUrl = "api/rental";
-    httpHeaders = { "X-Authorization": "API_KEY" };
+    httpHeaders = { "X-Authorization": API_KEY_PUBLIC };
     data = {};
 
     ajax(url, httpMethod, data) {

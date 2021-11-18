@@ -10,7 +10,7 @@ class Cars {
     // config
     apiUrl = "api/cars";
     apiOrdersUrl = "api/rental";
-    httpHeaders = { "X-Authorization": "API_KEY" };
+    httpHeaders = { "X-Authorization": API_KEY_DASHBOARD };
     data = {};
     lastAjaxData = {};
 
