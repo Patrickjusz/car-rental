@@ -21,6 +21,12 @@ class Rental {
         if (errors.length == 0) {
             simpleRequest.ajax(this.apiUrl, "POST", formData);
             this.hideModal();
+            //@TODO: REFACTOR! FAKE ALERT... I don't check the status for lack of time..  ;>
+            Swal.fire(
+                "Rezerwacja dodana!",
+                "Sprawdź skrzynkę e-mail...",
+                "success"
+            );
         }
     }
 
@@ -88,13 +94,21 @@ class Rental {
         }
     }
 
+    clearForm() {
+        $($btnSaveReservation).data("id", 0);
+        $($formErrors).hide();
+        $($formControl).val("");
+        $($formControl).removeClass("is-invalid");
+    }
+
     showModal(id) {
+        this.clearForm();
         $($btnSaveReservation).data("id", id);
         $($reservationModal).modal("show");
     }
 
     hideModal() {
-        $($btnSaveReservation).data("id", 0);
+        this.clearForm();
         $($reservationModal).modal("hide");
     }
 }
