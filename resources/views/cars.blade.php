@@ -7,7 +7,7 @@
 @section('content')
     <h1 class="mb-4 text-center">Moduł samochodów</h1>
     <button class="btn btn-primary mb-5 btn-add-car">Dodaj</button>
-    <table id="datatable-cars" class="table table-bordered">
+    <table id="datatable-cars" class="table table-striped table-bordered nowrap">
         <thead>
             <tr>
                 <th></th>

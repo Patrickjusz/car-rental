@@ -3,6 +3,7 @@ $(function () {
         window.datatable = $($datatableCars).DataTable({
             processing: true,
             serverSide: true,
+            responsive: true,
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pl.json",
             },
