@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Jobs\GetBoredApiActivityJob;
+use App\Http\Resources\OrderCollection;
 use Carbon\Carbon;
-use App\Models\Car;
 use App\Models\Order;
 use App\Jobs\SendNewOrderMailJob;
 use Illuminate\Http\JsonResponse;
-// use App\Services\BorderdApi;
+use App\Jobs\GetBoredApiActivityJob;
+use Illuminate\Support\Facades\Request;
 
 class RentalService
 {
@@ -25,6 +25,8 @@ class RentalService
     {
         $data['date_from'] = Carbon::parse($data['date_from']);
         $data['date_to'] = Carbon::parse($data['date_to']);
+        $data['ip'] = Request::ip();
+        $data['user_agent'] = Request::userAgent();
         $order = Order::create($data);
 
         if ($order->wasRecentlyCreated === true) {
@@ -35,6 +37,12 @@ class RentalService
         return self::getJsonResponse(self::STATUS_SUCCESS, '', 201, $data);
     }
 
+    public static function get(int $id): JsonResponse
+    {
+        $data = Order::where('car_id', $id)->get();
+
+        return self::getJsonResponse(self::STATUS_SUCCESS, '', 200, $data);
+    }
 
     /**
      * Get service HTTP response.
@@ -45,7 +53,7 @@ class RentalService
      * @param  array $data
      * @return JsonResponse
      */
-    private static function getJsonResponse(string $status, string $message = '', int $httpCode = 200, array $data = []): JsonResponse
+    private static function getJsonResponse(string $status, string $message = '', int $httpCode = 200,  $data = []): JsonResponse
     {
         $returnData['status'] = $status;
 

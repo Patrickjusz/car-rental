@@ -17,7 +17,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'car_id', 'city', 'email', 'date_from', 'date_to', 
+        'car_id', 'city', 'email', 'date_from', 'date_to', 'ip', 'user_agent' 
     ];
 
     /**

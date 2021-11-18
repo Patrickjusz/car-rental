@@ -3,11 +3,14 @@ $(function () {
         var id = $(this).data("id");
         var action = $(this).data("action");
 
-        if (id > 0 || action == 'save') {
+        if (id > 0 || action == "save") {
             if (action == "delete") {
                 cars.delete(id);
             } else if (action == "edit") {
                 cars.edit(this);
+            } else if (action == "preview") {
+                $("#preview-modal").modal("show");
+                cars.showOrders(id);
             } else if (action == "save") {
                 cars.add();
             }

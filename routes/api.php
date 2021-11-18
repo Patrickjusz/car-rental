@@ -30,3 +30,4 @@ Route::delete('/cars/{id}', [CarsController::class, 'destroy']);
 
 // Rental endpoints
 Route::post('/rental', [RentalController::class, 'store']);
+Route::get('/rental/{id}', [RentalController::class, 'get']);

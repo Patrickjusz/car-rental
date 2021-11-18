@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->date('date_from');
             $table->date('date_to');
             $table->ipAddress('ip')->nullable();
-            $table->integer('user_agent')->nullable();
+            $table->string('user_agent')->nullable();
             $table->unsignedBigInteger('car_id');
             $table->softDeletes();
             $table->timestamps();

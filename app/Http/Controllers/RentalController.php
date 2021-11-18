@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Order;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRentalRequest;
 use App\Services\RentalService;
+use Illuminate\Http\JsonResponse;
+use App\Http\Requests\StoreRentalRequest;
 
 class RentalController extends Controller
 {
@@ -21,7 +23,6 @@ class RentalController extends Controller
         return view('rental', ['cars' => $cars]);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -31,5 +32,17 @@ class RentalController extends Controller
     public function store(StoreRentalRequest $request)
     {
         return RentalService::create($request->validated());
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get(int $id): JsonResponse
+    {
+        return RentalService::get($id);
     }
 }

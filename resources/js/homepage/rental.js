@@ -20,6 +20,7 @@ class Rental {
 
         if (errors.length == 0) {
             simpleRequest.ajax(this.apiUrl, "POST", formData);
+            this.hideModal();
         }
     }
 
@@ -90,6 +91,11 @@ class Rental {
     showModal(id) {
         $($btnSaveReservation).data("id", id);
         $($reservationModal).modal("show");
+    }
+
+    hideModal() {
+        $($btnSaveReservation).data("id", 0);
+        $($reservationModal).modal("hide");
     }
 }
 

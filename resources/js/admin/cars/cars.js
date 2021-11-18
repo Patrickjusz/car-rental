@@ -4,12 +4,15 @@ var $priceInput = $("#car-price");
 var $stateSelect = $("#car-state");
 var $formControl = $(".form-control");
 var $formErrors = $(".form-errors");
+var $previewOrders = $("#preview-orders");
 
 class Cars {
     // config
     apiUrl = "api/cars";
+    apiOrdersUrl = "api/rental";
     httpHeaders = { "X-Authorization": "API_KEY" };
     data = {};
+    lastAjaxData = {};
 
     // methods
     add() {
@@ -22,7 +25,8 @@ class Cars {
 
         if (errors.length == 0) {
             httpMethod = isSetCarId ? "PUT" : "POST";
-            tmpApiUrl = isSetCarId > 0 ? (tmpApiUrl + "/" + formData.id) : tmpApiUrl;
+            tmpApiUrl =
+                isSetCarId > 0 ? tmpApiUrl + "/" + formData.id : tmpApiUrl;
             this.simpleRequest(tmpApiUrl, httpMethod, formData);
         }
     }
@@ -47,7 +51,7 @@ class Cars {
             url: url,
             headers: this.httpHeaders,
             data: data,
-            async: true,
+            async: false,
             beforeSend: cars.loading(true),
         })
             .done(function (data) {
@@ -57,7 +61,8 @@ class Cars {
             .fail(function (data) {
                 //
             })
-            .always(function () {
+            .always(function (data) {
+                classThis.lastAjaxData = data;
                 cars.loading(false);
             });
     }
@@ -152,6 +157,11 @@ class Cars {
 
     reloadDatatable() {
         datatable.ajax.reload();
+    }
+
+    showOrders(id) {
+        this.simpleRequest(this.apiOrdersUrl + "/" + id, "GET", {});
+        $($previewOrders).html(JSON.stringify(this.lastAjaxData));
     }
 }
 
